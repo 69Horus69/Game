@@ -83,7 +83,7 @@ def win(ai):
     for i in win_step:
         if field[i[0]] == field[i[1]] == field[i[2]] == 'X':
             field_show()
-            print(f'Победил(a) {game.player_1}!\n')
+            print(f'Победил(a) {player_1}!\n')
             return True
 
         if field[i[0]] == field[i[1]] == field[i[2]] == '0':
@@ -91,7 +91,7 @@ def win(ai):
             if ai:
                 print('Победил компьюетр\n')
             else:
-                print(f'Победил(a) {game.player_2}!\n')
+                print(f'Победил(a) {player_2}!\n')
             return True
     return False
 
@@ -102,7 +102,7 @@ def game(ai, difficulty):
         field_show()
         counter += 1
         if counter % 2 != 0:
-            print(f'Ходит {game.player_1} (X)')
+            print(f'Ходит {player_1} (X)')
             player_step = step_player()
             field[player_step - 1] = 'X'
         else:
@@ -111,7 +111,7 @@ def game(ai, difficulty):
                 player_step = step_ai(difficulty)
                 field[player_step] = '0'
             else:
-                print(f'Ходит {game.player_2} (0)')
+                print(f'Ходит {player_2} (0)')
                 player_step = step_player()
                 field[player_step - 1] = '0'
 
@@ -158,13 +158,13 @@ def choice_difficulty_ai():
 
 ai = choice_ai_player()
 if ai:
-    game.player_1 = input('Введите имя игрока (ходит X):\n')
-    game.player_2 = None
+    player_1 = input('Введите имя игрока (ходит X):\n')
+    player_2 = None
     difficulty = choice_difficulty_ai()
 else:
-    game.player_1 = input('Введите имя 1-го игрока (ходит X):\n')
+    player_1 = input('Введите имя 1-го игрока (ходит X):\n')
     print()
-    game.player_2 = input('Введите имя 2-го игрока (ходит 0):\n')
+    player_2 = input('Введите имя 2-го игрока (ходит 0):\n')
     difficulty = None
 
 game(ai, difficulty)
@@ -211,8 +211,8 @@ while True:
                 break
             elif repeat == '3':
                 print('Выбрана игра с человеком\n')
-                if not game.player_2:
-                    game.player_2 = input('Введите имя 2-го игрока (ходит 0):\n')
+                if not player_2:
+                    player_2 = input('Введите имя 2-го игрока (ходит 0):\n')
                 ai = False
                 difficulty == None
                 game(ai, difficulty)
